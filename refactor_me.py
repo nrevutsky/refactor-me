@@ -3,7 +3,7 @@
 from collections import namedtuple, defaultdict
 from operator import itemgetter
 
-Expense = namedtuple('Expense', ('type_', 'amount'))
+Expense = namedtuple('Expense', ('category', 'amount'))
 
 
 def sum_expenses(expenses, min_amount=0):
@@ -11,14 +11,14 @@ def sum_expenses(expenses, min_amount=0):
     for expense in expenses:
         amount = expense.amount
         if amount >= min_amount:
-            aggregated_expenses[expense.type_] += amount
+            aggregated_expenses[expense.category] += amount
     return aggregated_expenses
 
 
 def print_expenses(expenses):
     sorted_expenses = sorted(expenses.items(), key=itemgetter(1))
-    for expense, amount in sorted_expenses:
-        print(expense, amount)
+    for category, amount in sorted_expenses:
+        print(category, amount)
 
 
 if __name__ == '__main__':
