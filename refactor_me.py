@@ -16,11 +16,13 @@ def sum_expenses(expenses, min_amount=0):
 
 
 def print_expenses(expenses):
-    for expense, amount in sorted(expenses.items(), key=itemgetter(1)):
+    sorted_expenses = sorted(expenses.items(), key=itemgetter(1))
+    for expense, amount in sorted_expenses:
         print(expense, amount)
 
 
 if __name__ == '__main__':
     # TODO(dmu) HIGH: Use static fixtures and dynamic fixture framework instead
     test_expenses = (Expense('food', 4), Expense('food', 3), Expense('car', 3), Expense('dog', 1))
-    print_expenses(sum_expenses(test_expenses, 2))
+    aggregated_expenses = sum_expenses(test_expenses, 2)
+    print_expenses(aggregated_expenses)
